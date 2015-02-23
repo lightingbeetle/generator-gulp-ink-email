@@ -1,0 +1,18 @@
+{
+  "name": "<%= _.slugify(name) %>",
+  "version": "0.0.1",
+  "description": "<%= name %> description",
+  "author": "",
+  "devDependencies": {
+    "browser-sync" : "~2.2.1",
+    "del": "~1.1.1",
+    "gulp": "~3.8.11",
+    "gulp-concat": "~2.5.0",<% if (jade) { %>
+    "gulp-jade": "~1.0.0",<% } %>
+    "gulp-inline-css": "~2.0.0",<% if (sass) { %>
+    "gulp-sourcemaps": "~1.3.0",
+    "gulp-ruby-sass": "~1.0.0-alpha.3",<% } %>
+    "gulp-rename": "~1.2.0"<% if (jade) { %>,
+    "jade": "~1.9.2"<% } %>
+  }
+}
