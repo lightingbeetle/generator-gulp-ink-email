@@ -22,7 +22,7 @@
 
 * ZURB Ink responsive email templates
 * ZURB Ink CSS using Sassy Ink [Unofficial Sass port of Ink, Zurb's responsive email framework](https://github.com/faustgertz/sassy-ink) (Sass)
-* ZURB Ink.css (non-Sass)
+* ZURB Ink CSS (non-Sass)
 * Webserver with liverelaod
 * Jade templates compilation (Jade)
 * Sass compilation (Sass)
@@ -44,9 +44,9 @@ Gulpfile contains some useful tasks:
 2. `gulp build` for building from source to `dist` folder
 3. `gulp serve:dist` for build preview
 
-## Issues
+## Notes
 
-Media queries must be included in head of html/jade template manually due [issue #18](https://github.com/jonkemp/gulp-inline-css/issues/18), so copy appropriate css to head.
+Media queries should be revisited, because all of them are inlined into head.
  
 ## Contributors
  * Adam Močkoř (mockor@lbstudio.sk)

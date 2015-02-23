@@ -11,6 +11,7 @@ var reload = browserSync.reload;
 var sourcemaps = require('gulp-sourcemaps');<% } else { %>
 var concat = require('gulp-concat');<% } %>
 var inlineCss = require('gulp-inline-css');
+var inlineSource = require('gulp-inline-source');
 
 var rename = require('gulp-rename');
 
@@ -37,9 +38,11 @@ gulp.task('styles', function() {
 
 gulp.task('inline', ['styles'<% if (jade) { %>, 'jade'<% } %>], function() {
   return gulp.src('app/index.html')
+    .pipe(inlineSource({
+      rootpath: 'app'
+    }))
     .pipe(inlineCss({
-      preserveMediaQueries: true,
-      removeStyleTags: false
+      preserveMediaQueries: true
     }))
     .pipe(gulp.dest('dist/'));
 });

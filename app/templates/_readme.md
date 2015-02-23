@@ -39,9 +39,9 @@ gulp serve:dist
 <% if (sass) { %>* Sass compilation<% } %>
 * CSS concating and inlining
 
-## Issues
+## Notes
 
-Media queries must be included in head of html/jade template manually due [issue #18](https://github.com/jonkemp/gulp-inline-css/issues/18), so copy appropriate css to head.
+Media queries should be revisited, because all of them are inlined into head.
 
 ---
 
