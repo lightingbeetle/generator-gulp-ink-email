@@ -33,7 +33,7 @@ gulp.task('styles', function() {
     .pipe(concat('styles.css'))
     .pipe(gulp.dest('/app'))
     .pipe(reload({stream: true}));
-}); 
+});
 <% } %>
 
 gulp.task('inline', ['styles'<% if (jade) { %>, 'jade'<% } %>], function() {
@@ -70,9 +70,18 @@ gulp.task('serve', ['styles'<% if (jade) { %>, 'jade'<% } %>], function() {
     host: 'localhost'
   });
 
-  gulp.watch('app/styles/*.<% if (sass) { %>s<% } %>css', ['styles']);
-  gulp.watch('app/*.html').on('change', reload);
+  <% if (sass) { %>
+    gulp.watch('app/styles/**/*.scss', ['styles']);
+  <% } else { %>
+    gulp.watch('app/styles/*.css', ['styles']);
+  <% } %>
+
   <% if (jade) { %>gulp.watch('app/template/**/*.jade', ['jade']);<% } %>
+
+  gulp.watch([
+    'app/*.html',
+    'app/styles/*.css'
+  ]).on('change', reload);
 });
 
 gulp.task('serve:dist', ['inline'], function() {
