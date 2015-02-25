@@ -1,6 +1,6 @@
 {
   "name": "generator-gulp-ink-email",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Yeoman generator for responsive html emails using Zurb Ink Framework",
   "keywords": [
     "yeoman-generator",

@@ -10,6 +10,7 @@ var reload = browserSync.reload;
 <% if (sass) { %>var rubySass = require('gulp-ruby-sass');
 var sourcemaps = require('gulp-sourcemaps');<% } else { %>
 var concat = require('gulp-concat');<% } %>
+
 var inlineCss = require('gulp-inline-css');
 var inlineSource = require('gulp-inline-source');
 
@@ -29,9 +30,9 @@ gulp.task('styles', function() {
 });
 <% } else { %>
 gulp.task('styles', function() {
-  return gulp.src('app/styles/*.css')
-    .pipe(concat('styles.css'))
-    .pipe(gulp.dest('/app'))
+  return gulp.src(['app/styles/ink.css','app/styles/main.css'])
+    .pipe(concat('style.css'))
+    .pipe(gulp.dest('app/styles'))
     .pipe(reload({stream: true}));
 }); 
 <% } %>
@@ -70,7 +71,7 @@ gulp.task('serve', ['styles'<% if (jade) { %>, 'jade'<% } %>], function() {
     host: 'localhost'
   });
 
-  gulp.watch('app/styles/*.<% if (sass) { %>s<% } %>css', ['styles']);
+  gulp.watch('app/styles/<% if (sass) { %>**/*.scss<% } else { %>*.css<% } %>', ['styles']);
   gulp.watch('app/*.html').on('change', reload);
   <% if (jade) { %>gulp.watch('app/template/**/*.jade', ['jade']);<% } %>
 });
