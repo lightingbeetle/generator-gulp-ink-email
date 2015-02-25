@@ -30,7 +30,7 @@ gulp.task('styles', function() {
 });
 <% } else { %>
 gulp.task('styles', function() {
-  return gulp.src(['app/styles/ink.css','app/styles/main.css'])
+  return gulp.src('app/styles/css/*.css')
     .pipe(concat('style.css'))
     .pipe(gulp.dest('app/styles'))
     .pipe(reload({stream: true}));
@@ -71,7 +71,7 @@ gulp.task('serve', ['styles'<% if (jade) { %>, 'jade'<% } %>], function() {
     host: 'localhost'
   });
 
-  gulp.watch('app/styles/<% if (sass) { %>**/*.scss<% } else { %>*.css<% } %>', ['styles']);
+  gulp.watch('app/styles/<% if (sass) { %>**/*.scss<% } else { %>css/*.css<% } %>', ['styles']);
   gulp.watch('app/*.html').on('change', reload);
   <% if (jade) { %>gulp.watch('app/template/**/*.jade', ['jade']);<% } %>
 });

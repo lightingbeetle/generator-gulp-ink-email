@@ -135,8 +135,8 @@ module.exports = yeoman.generators.Base.extend({
       if (this.sass) {
         this.directory('scss', 'app/styles/scss');
       } else {
-        this.copy('css/ink.css', 'app/styles/ink.css');
-        this.copy('css/main.css', 'app/styles/main.css');
+        this.copy('css/ink.css', 'app/styles/css/ink.css');
+        this.copy('css/main.css', 'app/styles/css/main.css');
       }
     },
     
