@@ -38,7 +38,7 @@ gulp.task('styles', function() {
 <% } %>
 
 gulp.task('inline', ['styles'<% if (jade) { %>, 'jade'<% } %>], function() {
-  return gulp.src('app/index.html')
+  return gulp.src('app/*.html')
     .pipe(inlineSource({
       rootpath: 'app'
     }))
