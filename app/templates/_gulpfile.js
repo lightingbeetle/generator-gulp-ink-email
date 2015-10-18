@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -34,7 +35,7 @@ gulp.task('styles', function() {
     .pipe(concat('style.css'))
     .pipe(gulp.dest('app/styles'))
     .pipe(reload({stream: true}));
-}); 
+});
 <% } %>
 
 gulp.task('inline', ['styles'<% if (jade) { %>, 'jade'<% } %>], function() {
@@ -55,6 +56,11 @@ gulp.task('jade', function() {
       pretty: true,
       compileDebug: true
     }))
+    .on('error',function(error){
+      gutil.log(gutil.colors.magenta('Ooops Jade Crashed'),error);
+      gutil.beep();
+      cb();
+    })
     .pipe(gulp.dest('app/'));
 });
 <% } %>
